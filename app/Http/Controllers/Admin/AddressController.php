@@ -9,7 +9,11 @@ class AddressController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     *attach - add mais
+     *   sync -  o que tiver no array (atualiza) remove tudo e coloca o que esta no array
+     *   detach - remove
+     *   syncWithoutDetaching - add o que nao tem
+     *   toggle - tipo curtida
      * @return \Illuminate\Http\Response
      */
     public function index()

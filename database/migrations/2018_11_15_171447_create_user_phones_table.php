@@ -15,7 +15,8 @@ class CreateUserPhonesTable extends Migration
     {
         Schema::create('user_phones', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-		
+        
+            $table->increments('id');
 		    $table->integer('user_id')->unsigned();
 		    $table->integer('phone_id')->unsigned();
 		    

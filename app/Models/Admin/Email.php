@@ -22,4 +22,8 @@ class Email extends Model implements Auditable
     {
         return $this->belongsTo(EmailType::class);
     }
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'user_emails', 'user_id', 'email_id')->using(UserEmail::class);
+    }
 }

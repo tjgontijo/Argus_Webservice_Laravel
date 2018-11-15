@@ -15,7 +15,8 @@ class CreateUserEmailsTable extends Migration
     {
         Schema::create('user_emails', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-		
+        
+            $table->increments('id');
 		    $table->integer('user_id')->unsigned();
 		    $table->integer('email_id')->unsigned();
 		    
