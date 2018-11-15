@@ -5,12 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class UserController extends Controller
+class AddressTypeController extends Controller
 {
-    public function __construct(User $user)
-    {
-       $this->user = $user;
-    }
     /**
      * Display a listing of the resource.
      *
@@ -18,11 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = $this->user->all();
-        return response([
-            'status' => true,
-            'users' => $users
-        ], 200);
+        //
     }
 
     /**
@@ -43,14 +35,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $dataForm = $request->all();       
-        $user = $this->user->create([
-            'name' => $dataForm['name'],
-            'email' => $dataForm['email'],
-            'password' => Hash::make($dataForm['password']),
-        ]);
-        $user->token = $user->createToken($user->email)->accessToken;        
-        return $user;
+        //
     }
 
     /**
@@ -96,23 +81,5 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    /**
-     * Login de usuário vindo da API
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function login(Request $request)
-    {
-        $data = $request->all();    
-        if(Auth::attempt(['email'=>$data['email'],'password'=>$data['password']])){
-          $user = auth()->user();
-          $user->token = $user->createToken($user->email)->accessToken;
-          return $user;
-        }else{
-          return ['status'=>false];
-        }    
     }
 }

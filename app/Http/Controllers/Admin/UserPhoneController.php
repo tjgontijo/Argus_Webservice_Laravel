@@ -4,15 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Event;
 
-class EventController extends Controller
+class UserPhoneController extends Controller
 {
-    public function __construct(Event $event)
-    {
-       $this->event = $event;
-    }
-    
     /**
      * Display a listing of the resource.
      *
@@ -20,11 +14,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = $this->event->all();
-        return response([
-            'status' => true,
-            'events' => $events
-        ], 200);
+        //
     }
 
     /**
@@ -45,13 +35,7 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        $dataForm = $request->all();        
-        $event = $this->event->create($dataForm);
-        dd($event);
-        return response([
-            'status' => true,
-            'event' => $event
-        ], 200);
+        //
     }
 
     /**
