@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserEmailsTable extends Migration
+class CreateClassEmailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,25 +13,18 @@ class CreateUserEmailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_emails', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-        
+        Schema::create('class_emails', function (Blueprint $table) {
             $table->increments('id');
-		    $table->integer('user_id')->unsigned();
-		    $table->integer('email_id')->unsigned();
-		    
-		    $table->primary('user_id', 'email_id');
+            $table->integer('email_id')->unsigned();            
+            $table->morphs('class_emails');
 		
 		    $table->index('email_id','fk_users_has_emails_emails1_idx');
-		    $table->index('user_id','fk_users_has_emails_users1_idx');
-		
-		    $table->foreign('user_id')
-		        ->references('id')->on('users');
 		
 		    $table->foreign('email_id')
 		        ->references('id')->on('emails');
-		
-		    $table->timestamps();
+            
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -42,6 +35,6 @@ class CreateUserEmailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_emails');
+        Schema::dropIfExists('class_emails');
     }
 }

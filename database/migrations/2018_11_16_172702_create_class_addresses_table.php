@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserAddressesTable extends Migration
+class CreateClassAddressesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,25 +13,18 @@ class CreateUserAddressesTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_addresses', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-        
+        Schema::create('class_addresses', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->integer('address_id')->unsigned();
-		    
-		    $table->primary('address_id', 'user_id');
-		
-		    $table->index('user_id','fk_addresses_has_users_users1_idx');
+            $table->integer('address_id')->unsigned();		    
+            $table->morphs('class_addresses');
+
 		    $table->index('address_id','fk_addresses_has_users_addresses1_idx');
 		
 		    $table->foreign('address_id')
 		        ->references('id')->on('addresses');
-		
-		    $table->foreign('user_id')
-		        ->references('id')->on('users');
-		
-		    $table->timestamps();
+            
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -42,6 +35,6 @@ class CreateUserAddressesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_addresses');
+        Schema::dropIfExists('class_addresses');
     }
 }

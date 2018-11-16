@@ -22,8 +22,8 @@ class Phone extends Model implements Auditable
     {
         return $this->belongsTo(PhoneType::class);
     }
-    public function users()
+    public function userInfos()
     {
-        return $this->belongsToMany(User::class, 'user_phones', 'user_id', 'phone_id')->using(UserPhone::class);
+        return $this->morphedByMany(UserInfo::class, 'class_phones');
     }
 }

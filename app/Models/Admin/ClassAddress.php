@@ -6,23 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use OwenIt\Auditing\Contracts\Auditable;
 
-class UserAddress extends Model implements Auditable
+class ClassAddress extends Model implements Auditable
 {
     use SoftDeletes;
     use \OwenIt\Auditing\Auditable;
 
-    protected $fillable = ['address_id', 'user_id'];
+    protected $fillable = ['address_id' , 'class_addresses_type', 'class_addresses_id'];
 
     protected $hidden = [];
 
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
-    public function address()
-    {
-        return $this->belongsTo(Address::class);
-    }
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 }

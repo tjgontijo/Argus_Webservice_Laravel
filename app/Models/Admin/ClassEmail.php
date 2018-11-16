@@ -6,23 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use OwenIt\Auditing\Contracts\Auditable;
 
-class UserEmail extends Model
+class ClassEmail extends Model implements Auditable
 {
     use SoftDeletes;
     use \OwenIt\Auditing\Auditable;
 
-    protected $fillable = ['email_id', 'user_id'];
+    protected $fillable = ['email_id' , 'class_emails_type', 'class_emails_id'];
 
     protected $hidden = [];
 
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
-    public function email()
-    {
-        return $this->belongsTo(Email::class);
-    }
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 }
