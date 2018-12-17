@@ -5,13 +5,15 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\UserInfo;
+use App\Models\Admin\User;
 
 class UserInfoController extends Controller
 {
     
-    public function __construct(UserInfo $user_info)
+    public function __construct(UserInfo $user_info, User $user)
     {
        $this->user_info = $user_info;
+       $this->user = $user;
     }
     /**
      * Display a listing of the resource.
@@ -62,6 +64,7 @@ class UserInfoController extends Controller
      */
     public function show($id)
     {
+        $user = 
         $user_infos = $this->user_info->find($id);
         return response([
             'status' => true,

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\User;
+use App\Models\Admin\UserInfo;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
@@ -65,7 +66,12 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = $this->user->find($id);
+        $user_info = $user->userInfo;
+        return response([
+            'status' => true,
+            'user' => $user
+        ], 200);
     }
 
     /**
@@ -74,9 +80,16 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function addUserInfo(Request $request)
     {
-        //
+        $dataForm = $request->all();
+        //dd($dataForm['user_id']);
+        $user = $this->user->find($dataForm['user_id'])->userInfo()->create($dataForm);
+        return response([
+            'status' => true,
+            'user' => $user
+        ], 200);
+
     }
 
     /**
