@@ -30,7 +30,11 @@ class CreateUserInfosTable extends Migration
 		    $table->index('orientation_id','fk_users_orientations1_idx');
 		    $table->index('user_id','fk_user_infos_users1_idx');
 		
-		    $table->foreign('gender_id')
+            
+            $table->foreign('user_id')
+                ->references('id')->on('users');
+            
+            $table->foreign('gender_id')
 		        ->references('id')->on('genders');
 		
 		    $table->foreign('breed_id')
@@ -39,8 +43,6 @@ class CreateUserInfosTable extends Migration
 		    $table->foreign('orientation_id')
 		        ->references('id')->on('orientations');
 		
-		    $table->foreign('user_id')
-                ->references('id')->on('users');
             
             $table->timestamps();
 			$table->softDeletes();

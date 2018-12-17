@@ -4,9 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Breed;
 
 class BreedController extends Controller
 {
+    public function __construct(Breed $breed)
+    {
+       $this->breed = $breed;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +19,11 @@ class BreedController extends Controller
      */
     public function index()
     {
-        //
+        $breeds = $this->breed->all();
+        return response([
+            'status' => true,
+            'breeds' => $breeds
+        ], 200);
     }
 
     /**
@@ -35,7 +44,13 @@ class BreedController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dataForm = $request->all();
+        $breed = $this->breed->find($id)->update($dataForm);    
+
+        return response([
+            'status' => true,
+            'breed' => $breed
+        ], 200);
     }
 
     /**

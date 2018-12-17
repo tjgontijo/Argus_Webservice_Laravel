@@ -18,8 +18,8 @@ class Breed extends Model implements Auditable
 
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
-    public function users()
+    public function userInfos()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(userInfo::class);
     }
 }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 
 class UserController extends Controller
@@ -13,7 +14,7 @@ class UserController extends Controller
     public function __construct(User $user)
     {
        $this->user = $user;
-    }
+    } 
     /**
      * Display a listing of the resource.
      *

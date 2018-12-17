@@ -4,9 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\UserInfo;
 
 class UserInfoController extends Controller
 {
+    
+    public function __construct(UserInfo $user_info)
+    {
+       $this->user_info = $user_info;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,11 @@ class UserInfoController extends Controller
      */
     public function index()
     {
-        //
+        $user_infos = $this->user_info->all();
+        return response([
+            'status' => true,
+            'user_infos' => $user_infos
+        ], 200);
     }
 
     /**
@@ -35,7 +45,13 @@ class UserInfoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dataForm = $request->all();       
+        $user_info = $this->user_info->create($dataForm);
+                
+        return response([
+            'status' => true,
+            'user_info' => $user_info
+        ], 200);
     }
 
     /**
@@ -46,7 +62,11 @@ class UserInfoController extends Controller
      */
     public function show($id)
     {
-        //
+        $user_infos = $this->user_info->find($id);
+        return response([
+            'status' => true,
+            'user_infos' => $user_infos
+        ], 200);
     }
 
     /**

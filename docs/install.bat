@@ -6,6 +6,9 @@ composer require spatie/laravel-permission
 php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider" --tag="migrations"
 php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider" --tag="config"
 
+composer require barryvdh/laravel-cors
+php artisan vendor:publish --provider="Barryvdh\Cors\ServiceProvider"
+
 composer require laravel/passport
 php artisan vendor:publish --tag=passport-migrations
 php artisan passport:install --force
@@ -47,14 +50,17 @@ php artisan make:model Models/Admin/Address -m
 php artisan make:controller /Admin/UserController -r
 php artisan make:model Models/Admin/User -m
 
-php artisan make:controller /Admin/UserEmailController -r
-php artisan make:model Models/Admin/UserEmail -m
+php artisan make:controller /Admin/UserInfoController -r
+php artisan make:model Models/Admin/UserInfo -m
 
-php artisan make:controller /Admin/UserPhoneController -r
-php artisan make:model Models/Admin/UserPhone -m
+php artisan make:controller /Admin/ClassPhoneController -r
+php artisan make:model Models/Admin/ClassPhone -m
 
-php artisan make:controller /Admin/UserAddressController -r
-php artisan make:model Models/Admin/UserAddress -m
+php artisan make:controller /Admin/ClassEmailController -r
+php artisan make:model Models/Admin/ClassEmail -m
+
+php artisan make:controller /Admin/ClassAddressController -r
+php artisan make:model Models/Admin/ClassAddress -m
 
 php artisan make:controller /Admin/InstagramController -r
 php artisan make:model Models/Admin/Instagram -m
