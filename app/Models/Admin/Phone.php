@@ -22,7 +22,7 @@ class Phone extends Model implements Auditable
     {
         return $this->belongsTo(PhoneType::class);
     }
-    public function userInfos()
+    public function users()
     {
         return $this->morphedByMany(UserInfo::class, 'class_phones');
     }

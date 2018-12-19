@@ -24,23 +24,13 @@ class UserController extends Controller
     public function index()
     {
         $users = $this->user->all();
-        return response([
+        return response()->json([
             'status' => true,
             'users' => $users
         ], 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
+     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -54,8 +44,9 @@ class UserController extends Controller
             'email' => $dataForm['email'],
             'password' => Hash::make($dataForm['password']),
         ]);
-        $user->token = $user->createToken($user->email)->accessToken;        
+        $user->token = $user->createToken($user->email)->accessToken;    
         return $user;
+        
     }
 
     /**
@@ -66,7 +57,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = $this->user->find($id);
+        $user = $this->user->findOrFail($id);
         $user_info = $user->userInfo;
         return response([
             'status' => true,
@@ -101,7 +92,8 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = $this->user->findOrFail($id);
+        
     }
 
     /**

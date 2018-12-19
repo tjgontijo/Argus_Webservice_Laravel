@@ -50,9 +50,6 @@ php artisan make:model Models/Admin/Address -m
 php artisan make:controller /Admin/UserController -r
 php artisan make:model Models/Admin/User -m
 
-php artisan make:controller /Admin/UserInfoController -r
-php artisan make:model Models/Admin/UserInfo -m
-
 php artisan make:controller /Admin/ClassPhoneController -r
 php artisan make:model Models/Admin/ClassPhone -m
 

@@ -21,7 +21,7 @@ class Address extends Model implements Auditable
     {
         return $this->belongsTo(AddressType::class);
     }
-    public function userInfos()
+    public function users()
     {
         return $this->morphedByMany(UserInfo::class, 'class_addresses');
     }

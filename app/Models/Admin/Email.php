@@ -22,7 +22,7 @@ class Email extends Model implements Auditable
     {
         return $this->belongsTo(EmailType::class);
     }
-    public function userInfos()
+    public function users()
     {
         return $this->morphedByMany(UserInfo::class, 'class_emails');
     }
