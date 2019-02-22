@@ -28,10 +28,6 @@ class User extends Authenticatable implements Auditable
     {
         return $this->belongsTo(Gender::class);
     }
-    public function orientation()
-    {
-        return $this->belongsTo(Orientation::class);
-    }
     public function emails()
     {
         return $this->morthToMany(Email::class, 'class_emails');

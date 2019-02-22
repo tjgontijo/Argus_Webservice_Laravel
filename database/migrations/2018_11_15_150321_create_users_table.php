@@ -22,14 +22,12 @@ class CreateUsersTable extends Migration
             $table->string('password', 255);
             $table->integer('gender_id')->unsigned()->nullable();
 		    $table->integer('breed_id')->unsigned()->nullable();
-		    $table->integer('orientation_id')->unsigned()->nullable();
 		    $table->string('cpf', 45)->nullable();
 		    $table->string('rg', 45)->nullable();
 		    $table->date('dt_birth')->nullable();
 		
 		    $table->index('gender_id','fk_users_genders1_idx');
 		    $table->index('breed_id','fk_users_breeds1_idx');
-		    $table->index('orientation_id','fk_users_orientations1_idx');
             
             $table->foreign('gender_id')
 		        ->references('id')->on('genders');
@@ -37,8 +35,6 @@ class CreateUsersTable extends Migration
 		    $table->foreign('breed_id')
 		        ->references('id')->on('breeds');
 		
-		    $table->foreign('orientation_id')
-		        ->references('id')->on('orientations');
 
 			$table->timestamps();
 			$table->softDeletes();

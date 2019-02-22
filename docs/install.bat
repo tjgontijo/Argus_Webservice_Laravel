@@ -59,8 +59,14 @@ php artisan make:model Models/Admin/ClassEmail -m
 php artisan make:controller /Admin/ClassAddressController -r
 php artisan make:model Models/Admin/ClassAddress -m
 
-php artisan make:controller /Admin/InstagramController -r
-php artisan make:model Models/Admin/Instagram -m
+php artisan make:controller /Admin/CourseTypeController -r
+php artisan make:model Models/Admin/CourseType -m
 
-php artisan make:controller /Admin/InstagramUserController -r
-php artisan make:model Models/Admin/InstagramUser -m
+php artisan make:controller /Admin/TypeUnitController -r
+php artisan make:model Models/Admin/TypeUnit -m
+
+php artisan make:controller /Admin/UnitController -r
+php artisan make:model Models/Admin/Unit -m
+
+php artisan make:controller /Admin/CourseController -r
+php artisan make:model Models/Admin/Course -m

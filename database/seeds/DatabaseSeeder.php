@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call(BreedsSeeder::class);
         $this->call(EmailTypesSeeder::class);
         $this->call(GendersSeeder::class);
-        $this->call(OrientationsSeeder::class);
+        // $this->call(OrientationsSeeder::class);
         $this->call(PhoneTypesSeeder::class);
     }
 }

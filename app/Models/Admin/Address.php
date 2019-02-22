@@ -23,7 +23,11 @@ class Address extends Model implements Auditable
     }
     public function users()
     {
-        return $this->morphedByMany(UserInfo::class, 'class_addresses');
+        return $this->morphedByMany(User::class, 'class_addresses');
+    }
+    public function units()
+    {
+        return $this->morphedByMany(Unit::class, 'class_emails');
     }
 
 }

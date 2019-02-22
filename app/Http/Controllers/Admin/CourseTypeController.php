@@ -4,14 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Gender;
 
-class GenderController extends Controller
+class CourseTypeController extends Controller
 {
-    public function __construct(Gender $gender)
-    {
-       $this->gender = $gender;
-    }
     /**
      * Display a listing of the resource.
      *
@@ -19,11 +14,7 @@ class GenderController extends Controller
      */
     public function index()
     {
-        $genders = $this->gender->all();
-        return response([
-            'status' => true,
-            'genders' => $genders
-        ], 200);
+        //
     }
 
     /**
@@ -44,13 +35,7 @@ class GenderController extends Controller
      */
     public function store(Request $request)
     {
-        $dataForm = $request->all();
-        $gender = $this->gender->create($dataForm);
-
-        return response([
-            'status' => true,
-            'gender' => $gender
-        ], 200);
+        //
     }
 
     /**
@@ -61,11 +46,7 @@ class GenderController extends Controller
      */
     public function show($id)
     {
-        $gender = $this->gender->findOrFail($id);
-        return response([
-            'status' => true,
-            'gender' => $gender
-        ], 200);
+        //
     }
 
     /**
@@ -88,15 +69,7 @@ class GenderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $dataForm = $request->all();
-        $gender = $this->gender->find($id)->update($dataForm);    
-
-        return response([
-            'status' => true,
-            'gender' => $gender
-        ], 200);
-
-
+        //
     }
 
     /**
@@ -107,10 +80,6 @@ class GenderController extends Controller
      */
     public function destroy($id)
     {
-        $gender = $this->gender->find($id)->delete($id);
-
-        return response([
-            'status' => true
-        ], 200);
+        //
     }
 }

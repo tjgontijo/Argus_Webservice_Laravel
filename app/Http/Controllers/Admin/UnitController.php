@@ -4,14 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Orientation;
 
-class OrientationController extends Controller
+class UnitController extends Controller
 {
-    public function __construct(Orientation $orientation)
-    {
-       $this->orientation = $orientation;
-    }
     /**
      * Display a listing of the resource.
      *
@@ -19,11 +14,7 @@ class OrientationController extends Controller
      */
     public function index()
     {
-        $orientations = $this->orientation->all();
-        return response([
-            'status' => true,
-            'orientations' => $orientations
-        ], 200);
+        //
     }
 
     /**
