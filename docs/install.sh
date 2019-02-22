@@ -64,3 +64,4 @@ php artisan make:model Models/Admin/Instagram -m
 
 php artisan make:controller /Admin/InstagramUserController -r
 php artisan make:model Models/Admin/InstagramUser -m
+
