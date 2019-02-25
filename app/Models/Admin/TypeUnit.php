@@ -13,5 +13,9 @@ class TypeUnit extends Model implements Auditable
     use SoftDeletes;
     use \OwenIt\Auditing\Auditable;
 
-    //
+    protected $fillable = ['name', 'description'];
+
+    protected $hidden = [];
+
+    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 }

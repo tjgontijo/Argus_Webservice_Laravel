@@ -14,6 +14,6 @@ $this->group(['namespace' => 'Admin'], function () {
 
     $this->resource('breeds', 'BreedController');
 
-    $this->resource('orientations', 'OrientationController');
+    $this->resource('type_units', 'TypeUnitController');
 
 });

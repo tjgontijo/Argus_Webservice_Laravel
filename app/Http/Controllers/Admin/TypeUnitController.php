@@ -4,9 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\TypeUnit;
 
 class TypeUnitController extends Controller
 {
+    public function __construct(TypeUnit $type_unit)
+    {
+       $this->type_unit = $type_unit;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,17 +19,11 @@ class TypeUnitController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $type_units = $this->type_unit->all();
+        return response([
+            'status' => true,
+            'typeUnits' => $type_units
+        ], 200);
     }
 
     /**
@@ -35,7 +34,13 @@ class TypeUnitController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dataForm = $request->all();
+        $type_unit = $this->type_unit->create($dataForm);
+
+        return response([
+            'status' => true,
+            'typeUnit' => $type_unit
+        ], 200);
     }
 
     /**
@@ -46,21 +51,14 @@ class TypeUnitController extends Controller
      */
     public function show($id)
     {
-        //
+        $type_unit = $this->type_unit->findOrFail($id);
+        return response([
+            'status' => true,
+            'typeUnit' => $type_unit
+        ], 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
+     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -69,7 +67,15 @@ class TypeUnitController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $dataForm = $request->all();
+        $type_unit = $this->type_unit->find($id)->update($dataForm);    
+
+        return response([
+            'status' => true,
+            'typeUnit' => $type_unit
+        ], 200);
+
+
     }
 
     /**
@@ -80,6 +86,11 @@ class TypeUnitController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $type_unit = $this->type_unit->find($id)->delete($id);
+
+        return response([
+            'status' => true,
+            'typeUnit' => $type_unit
+        ], 200);
     }
 }
