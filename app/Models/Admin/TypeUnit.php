@@ -13,7 +13,7 @@ class TypeUnit extends Model implements Auditable
     use SoftDeletes;
     use \OwenIt\Auditing\Auditable;
 
-    protected $fillable = ['name', 'description'];
+    protected $fillable = ['name', 'description', 'isTeach'];
 
     protected $hidden = [];
 

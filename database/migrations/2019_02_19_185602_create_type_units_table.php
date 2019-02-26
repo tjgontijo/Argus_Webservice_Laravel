@@ -17,7 +17,8 @@ class CreateTypeUnitsTable extends Migration
             
             $table->increments('id');
             $table->string('name', 45);
-            $table->string('description', 200);
+            $table->text('description')->nullable();
+            $table->string('isTeach');
             
             $table->timestamps();
             $table->softDeletes();
