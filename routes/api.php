@@ -15,5 +15,7 @@ $this->group(['namespace' => 'Admin'], function () {
     $this->resource('breeds', 'BreedController');
 
     $this->resource('type_units', 'TypeUnitController');
+    
+    $this->resource('units', 'UnitController');
 
 });

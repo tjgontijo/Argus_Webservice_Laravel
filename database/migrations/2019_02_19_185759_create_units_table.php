@@ -15,14 +15,9 @@ class CreateUnitsTable extends Migration
     {
         Schema::create('units', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('type_unit_id')->unsigned();
-            $table->string('short_name', 20);
+            $table->string('shortName', 20);
             $table->string('name', 200);
-            
-            $table->index('type_unit_id','fk_units_types1_idx');
-            
-            $table->foreign('type_unit_id')
-            ->references('id')->on('type_units');
+            $table->string('isTeach');
             
             $table->timestamps();
             $table->softDeletes();

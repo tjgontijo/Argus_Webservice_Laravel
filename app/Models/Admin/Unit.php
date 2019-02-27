@@ -13,7 +13,7 @@ class Unit extends Model implements Auditable
     use SoftDeletes;
     use \OwenIt\Auditing\Auditable;
 
-    protected $fillable = ['id', 'type_unit_id', 'short_name', 'name'];
+    protected $fillable = ['id', 'shortName', 'name', 'isTeach'];
 
     protected $hidden = [];
 
