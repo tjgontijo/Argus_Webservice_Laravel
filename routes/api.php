@@ -18,4 +18,6 @@ $this->group(['namespace' => 'Admin'], function () {
     
     $this->resource('units', 'UnitController');
 
+    $this->resource('course_types', 'CourseTypeController');
+
 });
