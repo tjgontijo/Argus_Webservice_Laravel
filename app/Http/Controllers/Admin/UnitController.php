@@ -10,7 +10,7 @@ class UnitController extends Controller
 {
     public function __construct(Unit $unit)
     {
-       $this->unit = $unit;
+        $this->unit = $unit;
     }
     /**
      * Display a listing of the resource.
@@ -58,7 +58,7 @@ class UnitController extends Controller
         ], 200);
     }
 
-     /**
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -68,14 +68,12 @@ class UnitController extends Controller
     public function update(Request $request, $id)
     {
         $dataForm = $request->all();
-        $unit = $this->unit->find($id)->update($dataForm);    
+        $unit = $this->unit->find($id)->update($dataForm);
 
         return response([
             'status' => true,
             'unit' => $unit
         ], 200);
-
-
     }
 
     /**
