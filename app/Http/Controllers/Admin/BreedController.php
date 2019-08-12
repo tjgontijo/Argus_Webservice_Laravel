@@ -45,7 +45,7 @@ class BreedController extends Controller
     public function store(Request $request)
     {
         $dataForm = $request->all();
-        $breed = $this->breed->find($id)->update($dataForm);    
+        $breed = $this->breed->create($dataForm);
 
         return response([
             'status' => true,
@@ -61,7 +61,11 @@ class BreedController extends Controller
      */
     public function show($id)
     {
-        //
+        $breed = $this->breed->findOrFail($id);
+        return response([
+            'status' => true,
+            'breed' => $breed
+        ], 200);
     }
 
     /**
@@ -84,7 +88,13 @@ class BreedController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $dataForm = $request->all();
+        $breed = $this->breed->find($id)->update($dataForm);    
+
+        return response([
+            'status' => true,
+            'breed' => $breed
+        ], 200);
     }
 
     /**
@@ -95,6 +105,10 @@ class BreedController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $breed = $this->breed->find($id)->delete($id);
+
+        return response([
+            'status' => true
+        ], 200);
     }
 }
